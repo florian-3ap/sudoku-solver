@@ -1,0 +1,19 @@
+.buttonPane {
+    -fx-padding: 5 0 0 5;
+    -fx-spacing: 5;
+}
+
+.sudokuPane {
+    -fx-padding: 5 5 0 5;
+    -fx-hgap: 5;
+    -fx-vgap: 5;
+}
+
+.textFields {
+    -fx-font-size: 20;
+    -fx-pref-width: 40;
+    -fx-pref-height: 40;
+    -fx-alignment: center;
+    -fx-border-color: black;
+    -fx-background-color: transparent;
+}

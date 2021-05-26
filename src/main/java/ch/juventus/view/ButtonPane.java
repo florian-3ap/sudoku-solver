@@ -9,9 +9,11 @@ public class ButtonPane extends HBox {
   public ButtonPane() {
     super();
     setAlignment(Pos.CENTER);
+    getStyleClass().add("buttonPane");
   }
 
   public void addButton(Button button) {
     getChildren().add(button);
+    button.getStyleClass().add("buttons");
   }
 }
