@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.util.Arrays;
 import java.util.List;
 
-public class SudokuImporter implements PuzzleImporter<Sudoku> {
+public class SudokuImporter {
 
   private static final List<Integer> VALID_SUDOKU_SIZE = Arrays.asList(2, 3, 4, 9);
 
@@ -21,7 +21,6 @@ public class SudokuImporter implements PuzzleImporter<Sudoku> {
     this.gson = new GsonBuilder().create();
   }
 
-  @Override
   public Sudoku importPuzzle(File file) throws FileNotFoundException, ImportException {
     JsonReader jsonReader = new JsonReader(new FileReader(file));
 
@@ -32,6 +31,6 @@ public class SudokuImporter implements PuzzleImporter<Sudoku> {
           String.format("%d is not a valid sudoku size", sudokuFile.getSize()));
     }
 
-    return new Sudoku(gson.fromJson(jsonReader, SudokuFile.class));
+    return new Sudoku(sudokuFile);
   }
 }

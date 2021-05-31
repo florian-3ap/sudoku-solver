@@ -9,20 +9,32 @@ import javafx.scene.layout.StackPane;
 
 public class SudokuBoard extends HBox {
 
+  private Sudoku sudoku;
   private final GridPane gridPane;
 
-  public SudokuBoard() {
+  SudokuBoard() {
     gridPane = new GridPane();
     setAlignment(Pos.CENTER);
-    showSudoku(new Sudoku());
     gridPane.getStyleClass().add("sudokuPane");
+
+    this.sudoku = new Sudoku();
+    showSudoku();
 
     StackPane stackPane = new StackPane();
     stackPane.getChildren().add(gridPane);
     getChildren().add(stackPane);
   }
 
-  public void showSudoku(Sudoku sudoku) {
+  Sudoku getSudoku() {
+    return sudoku;
+  }
+
+  void loadSudoku(Sudoku sudoku) {
+    this.sudoku = sudoku;
+    showSudoku();
+  }
+
+  void showSudoku() {
     gridPane.getChildren().clear();
 
     for (int row = 0; row < sudoku.getBoardSize(); row++) {

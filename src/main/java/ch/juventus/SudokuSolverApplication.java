@@ -14,7 +14,7 @@ public class SudokuSolverApplication extends Application {
   public void start(Stage stage) {
     logger.info("Startup SudokuSolverApplication...");
     stage.setTitle("Sudoku Solver");
-    stage.setScene(new MainView(stage).getScene());
+    stage.setScene(new MainView().getScene());
     stage.show();
     logger.info("SudokuSolverApplication is successfully started.");
   }

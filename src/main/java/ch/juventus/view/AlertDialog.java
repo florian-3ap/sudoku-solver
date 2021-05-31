@@ -6,11 +6,11 @@ public class AlertDialog {
 
   private AlertDialog() {}
 
-  public static void error(String title, String header, String content) {
+  static void error(String title, String header, String content) {
     AlertDialog.create(Alert.AlertType.ERROR, title, header, content);
   }
 
-  private static void create(Alert.AlertType type, String title, String header, String content) {
+  static void create(Alert.AlertType type, String title, String header, String content) {
     Alert alert = new Alert(type);
     alert.setTitle(title);
     alert.setHeaderText(header);

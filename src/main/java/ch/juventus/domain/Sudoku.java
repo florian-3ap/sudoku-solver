@@ -3,7 +3,7 @@ package ch.juventus.domain;
 import ch.juventus.importer.SudokuFile;
 import java.util.stream.IntStream;
 
-public class Sudoku implements Puzzle {
+public class Sudoku {
 
   private static final int EMPTY_CELL_NUMBER = 0;
   private static final int BOARD_START_INDEX = 0;
@@ -48,22 +48,48 @@ public class Sudoku implements Puzzle {
     return this.board[row][column] == EMPTY_CELL_NUMBER;
   }
 
-  // combined method to check if a number possible to a row,column position is ok
+  /**
+   * Combined method to check if a number possible to a row,column position is ok
+   *
+   * @param row
+   * @param column
+   * @param number
+   * @return
+   */
   public boolean isOk(int row, int column, int number) {
     return !isInRow(row, number) && !isInColumn(column, number) && !isInBox(row, column, number);
   }
 
-  // check if a possible number is already in a row
+  /**
+   * Check if a possible number is already in a row
+   *
+   * @param row
+   * @param number
+   * @return
+   */
   private boolean isInRow(int row, int number) {
     return IntStream.range(BOARD_START_INDEX, boardSize).anyMatch(i -> board[row][i] == number);
   }
 
-  // check if a possible number is already in a column
+  /**
+   * Check if a possible number is already in a column
+   *
+   * @param column
+   * @param number
+   * @return
+   */
   private boolean isInColumn(int column, int number) {
     return IntStream.range(BOARD_START_INDEX, boardSize).anyMatch(i -> board[i][column] == number);
   }
 
-  // check if a possible number is in its box (eq. 3x3 on 9 board size)
+  /**
+   * Check if a possible number is in its box (eq. 3x3 on 9 board size)
+   *
+   * @param row
+   * @param column
+   * @param number
+   * @return
+   */
   private boolean isInBox(int row, int column, int number) {
     int boxRow = row - row % boxSize;
     int boxColumn = column - column % boxSize;

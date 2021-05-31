@@ -21,9 +21,4 @@ public class SudokuFile {
   public void setSquares(List<SudokuSquare> squares) {
     this.squares = squares;
   }
-
-  @Override
-  public String toString() {
-    return "SudokuFile{" + "size=" + size + ", squares=" + squares + '}';
-  }
 }
