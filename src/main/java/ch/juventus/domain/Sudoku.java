@@ -28,6 +28,10 @@ public class Sudoku {
         .forEach(value -> this.board[value.getY()][value.getX()] = value.getValue());
   }
 
+  public int[][] getBoard() {
+    return board;
+  }
+
   public int getBoardSize() {
     return boardSize;
   }
@@ -48,49 +52,19 @@ public class Sudoku {
     return this.board[row][column] == EMPTY_CELL_NUMBER;
   }
 
-  /**
-   * Combined method to check if a number possible to a row,column position is ok
-   *
-   * @param row
-   * @param column
-   * @param number
-   * @return
-   */
   public boolean isOk(int row, int column, int number) {
     return !isInRow(row, number) && !isInColumn(column, number) && !isInBox(row, column, number);
   }
 
-  /**
-   * Check if a possible number is already in a row
-   *
-   * @param row
-   * @param number
-   * @return
-   */
-  private boolean isInRow(int row, int number) {
+  public boolean isInRow(int row, int number) {
     return IntStream.range(BOARD_START_INDEX, boardSize).anyMatch(i -> board[row][i] == number);
   }
 
-  /**
-   * Check if a possible number is already in a column
-   *
-   * @param column
-   * @param number
-   * @return
-   */
-  private boolean isInColumn(int column, int number) {
+  public boolean isInColumn(int column, int number) {
     return IntStream.range(BOARD_START_INDEX, boardSize).anyMatch(i -> board[i][column] == number);
   }
 
-  /**
-   * Check if a possible number is in its box (eq. 3x3 on 9 board size)
-   *
-   * @param row
-   * @param column
-   * @param number
-   * @return
-   */
-  private boolean isInBox(int row, int column, int number) {
+  public boolean isInBox(int row, int column, int number) {
     int boxRow = row - row % boxSize;
     int boxColumn = column - column % boxSize;
 

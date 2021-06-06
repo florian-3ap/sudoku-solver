@@ -6,6 +6,14 @@ public class SudokuSquare {
   private int y;
   private int value;
 
+  public SudokuSquare() {}
+
+  public SudokuSquare(int x, int y, int value) {
+    this.x = x;
+    this.y = y;
+    this.value = value;
+  }
+
   public int getX() {
     return x;
   }
