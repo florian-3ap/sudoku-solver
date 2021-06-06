@@ -17,8 +17,7 @@ public class SudokuBoard extends HBox {
     setAlignment(Pos.CENTER);
     gridPane.getStyleClass().add("sudokuPane");
 
-    this.sudoku = new Sudoku();
-    showSudoku();
+    updateSudoku(new Sudoku());
 
     StackPane stackPane = new StackPane();
     stackPane.getChildren().add(gridPane);
@@ -31,10 +30,19 @@ public class SudokuBoard extends HBox {
 
   void loadSudoku(Sudoku sudoku) {
     this.sudoku = sudoku;
-    showSudoku();
+    updateSudoku(sudoku);
   }
 
-  void showSudoku() {
+  void update() {
+    updateSudoku(this.sudoku);
+  }
+
+  void reset() {
+    this.sudoku = null;
+    updateSudoku(new Sudoku());
+  }
+
+  private void updateSudoku(Sudoku sudoku) {
     gridPane.getChildren().clear();
 
     for (int row = 0; row < sudoku.getBoardSize(); row++) {

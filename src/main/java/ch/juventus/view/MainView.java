@@ -32,6 +32,7 @@ public class MainView {
     root.setCenter(sudokuBoard);
     buttons.addButton(createLoadSudokuButton());
     buttons.addButton(createSolveButton());
+    buttons.addButton(createResetButton());
 
     Scene scene = new Scene(root, 500, 500);
     scene
@@ -64,11 +65,17 @@ public class MainView {
         actionEvent -> {
           try {
             sudokuController.solveSudoku(sudokuBoard.getSudoku());
-            sudokuBoard.showSudoku();
+            sudokuBoard.update();
           } catch (SolvingException e) {
             AlertDialog.error("Solving Error", "The Sudoku could not be solved!", e.getMessage());
           }
         });
+    return button;
+  }
+
+  private Button createResetButton() {
+    Button button = new Button("Reset");
+    button.setOnAction(actionEvent -> sudokuBoard.reset());
     return button;
   }
 
