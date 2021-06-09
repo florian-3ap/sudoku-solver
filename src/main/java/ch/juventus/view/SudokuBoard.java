@@ -54,7 +54,7 @@ public class SudokuBoard extends HBox {
   }
 
   private TextField createTextField(int value) {
-    TextField textField = new TextField(String.valueOf(value));
+    TextField textField = new TextField(value == 0 ? "" : String.valueOf(value));
     textField.setEditable(false);
     textField.getStyleClass().add("textFields");
     return textField;
